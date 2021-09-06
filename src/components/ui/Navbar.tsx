@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+// import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { themeChange } from 'theme-change'
 
 const Navbar = () => {
-  const location = useLocation()
+  // const location = useLocation()
   const [darkTheme, setDarkTheme] = useState(false)
   const [navbarActive, setNavbarActive] = useState(false)
 
@@ -17,8 +18,6 @@ const Navbar = () => {
       setDarkTheme(false)
     }
   }, [])
-
-  console.log(navbarActive, !(location.pathname === '/'))
 
   const changeTheme = () => {
     setDarkTheme(!darkTheme)

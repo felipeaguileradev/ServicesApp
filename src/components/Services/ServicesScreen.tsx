@@ -118,7 +118,7 @@ const ServicesScreen = () => {
             Productos y Servicios
           </h2>
 
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6  sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8  masonry-grid ">
+          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6  sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {servicesData.map((service, index) => (
               <CardService
                 title={service.title}
