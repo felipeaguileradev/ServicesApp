@@ -156,8 +156,8 @@ const Navbar = () => {
             fill="currentColor"
             className={
               darkTheme
-                ? 'transition-colors duration-200 text-gray-900'
-                : 'transition-colors duration-200 text-gray-300'
+                ? 'transition-colors duration-200 text-gray-900 '
+                : 'transition-colors duration-200 text-gray-300 '
             }
           >
             <path

@@ -8,7 +8,7 @@ interface Props {
 
 const CardService = ({ title, description, image }: Props) => {
   return (
-    <div className="card bg-base-100 shadow-sm  hover:shadow-2xl  group cursor-pointers  transition-all duration-500 ease-in-out transform  hover:scale-105 ">
+    <div className="card bg-base-100 shadow-sm  hover:shadow-2xl  group cursor-pointer  transition-all duration-500 ease-in-out transform hover:scale-105 ">
       <figure className="group-hover:opacity-75 ">
         <img className="h-96 w-full object-cover  " src={image} />
       </figure>

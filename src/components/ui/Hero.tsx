@@ -23,7 +23,6 @@ const Hero = () => {
               Esta plataforma fue creada con el objetivo de centralizar y visualizar los servicios
               de la comunidad, además de darle un fácil y rápido acceso a la información estos.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>

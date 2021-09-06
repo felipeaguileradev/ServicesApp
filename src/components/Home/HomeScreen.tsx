@@ -3,9 +3,9 @@
 import CTASection from '../ui/CTASection'
 import Hero from '../ui/Hero'
 import ProductList from '../ui/ProductList'
-import PromoSection from '../ui/PromoSection'
-import SectionCategory from '../ui/SectionCategory'
-import Stats from '../ui/Stats'
+// import Stats from '../ui/Stats'
+// import PromoSection from '../ui/PromoSection'
+// import SectionCategory from '../ui/SectionCategory'
 
 const HomeScreen = () => {
   //   const { setDarkTheme, setLightTheme } = useContext(ThemeContext)
@@ -13,11 +13,11 @@ const HomeScreen = () => {
   return (
     <>
       <Hero />
-      <SectionCategory />
-      <CTASection />
+      {/* <SectionCategory /> */}
       <ProductList />
-      <Stats />
-      <PromoSection />
+      <CTASection />
+      {/* <Stats /> */}
+      {/* <PromoSection /> */}
     </>
   )
 }

@@ -100,7 +100,7 @@ const servicesData = [
 const ServicesScreen = () => {
   return (
     <>
-      <div className="hero h-96 pt-16 overflow-hidden bg-gradient-to-br from-1-fuchsia-500 to-purple-600 text-primary-content">
+      <div className="hero h-96 pt-16 overflow-hidden bg-gradient-to-br from-green-300 via-1-sky-500 to-1-teal-500 text-primary-content">
         <div className="text-center hero-content">
           <div className="max-w-xl">
             <h1 className="mb-5 text-4xl sm:text-6xl lg:text-7xl font-extrabold">
