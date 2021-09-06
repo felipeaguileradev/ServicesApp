@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="p-10 bg-base-200 text-base-content rounded-t-box ">
-        <div className="container mx-auto footer grid-cols-2">
+        <div className="container mx-auto footer grid-cols-2 ">
           <div>
             <span className="footer-title">Servicios</span>
             <a

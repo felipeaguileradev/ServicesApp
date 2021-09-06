@@ -1,101 +1,7 @@
+import { Link } from 'react-router-dom'
 import CardService from '../ui/CardService'
-
-const servicesData = [
-  {
-    title: 'Titulo 1',
-    description: 'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.',
-    image: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
-  },
-  {
-    title: 'Titulo 2',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://www.tailwind-kit.com/images/object/8.jpg'
-  },
-  {
-    title: 'Titulo 3',
-    description: 'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.',
-    image: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 4',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://picsum.photos/id/1005/400/250'
-  },
-  {
-    title: 'Titulo 5',
-    description:
-      'Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.Rerum reiciendis beatae tenetur excepturi aut pariatur est eosRerum reiciendis beatae tenetur excepturi aut pariatur est eos',
-    image: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
-  }
-]
+import { servicesData } from '../data/dataTest'
+// import { useEffect, useState } from 'react'
 
 const ServicesScreen = () => {
   return (
@@ -119,13 +25,14 @@ const ServicesScreen = () => {
           </h2>
 
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6  sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {servicesData.map((service, index) => (
-              <CardService
-                title={service.title}
-                description={service.description}
-                key={index}
-                image={service.image}
-              />
+            {servicesData.map(service => (
+              <Link to={`/services/${service.id}`} key={service.id}>
+                <CardService
+                  title={service.title}
+                  description={service.description}
+                  image={service.image}
+                />
+              </Link>
             ))}
           </div>
         </div>
