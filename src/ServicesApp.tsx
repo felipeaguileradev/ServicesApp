@@ -1,7 +1,8 @@
 import React from 'react'
 
-import HomeScreen from './components/Home/HomeScreen'
+// import HomeScreen from './components/Home/HomeScreen'
 // import { ThemeProvider } from './context/themeContext/ThemeContext'
+import AppRouter from './routes/AppRouter'
 
 // const AppState = ({ children }: any) => {
 //   return <ThemeProvider>{children} </ThemeProvider>
@@ -10,7 +11,7 @@ import HomeScreen from './components/Home/HomeScreen'
 const ServicesApp = () => {
   return (
     // <AppState>
-    <HomeScreen />
+    <AppRouter />
     // </AppState>
   )
 }
