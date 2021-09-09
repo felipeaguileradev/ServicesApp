@@ -1,24 +1,25 @@
 // import { ThemeContext } from '../../context/themeContext/ThemeContext'
 
+import { useEffect } from 'react'
 import CTASection from '../ui/CTASection'
 import Hero from '../ui/Hero'
 import ProductList from '../ui/ProductList'
-// import Stats from '../ui/Stats'
-// import PromoSection from '../ui/PromoSection'
+import { ScrollTop } from '../../helpers/ScrollTop'
+import SectionInformation from './SectionInformation'
 // import SectionCategory from '../ui/SectionCategory'
 
 const HomeScreen = () => {
-  //   const { setDarkTheme, setLightTheme } = useContext(ThemeContext)
-
+  useEffect(() => {
+    ScrollTop()
+  }, [])
   return (
-    <>
+    <div className="bg-base-200">
       <Hero />
       {/* <SectionCategory /> */}
       <ProductList />
       <CTASection />
-      {/* <Stats /> */}
-      {/* <PromoSection /> */}
-    </>
+      <SectionInformation />
+    </div>
   )
 }
 

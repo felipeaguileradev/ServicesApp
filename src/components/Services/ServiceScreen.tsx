@@ -35,9 +35,6 @@ const ServiceScreen = () => {
             <h1 className="mb-5 text-4xl sm:text-6xl lg:text-7xl font-extrabold">
               Productos y Servicios
             </h1>
-            <p className="mb-5">
-              Puedes visualizar todos los productos y servicios en esta sección
-            </p>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const CardService = ({ title, description, image }: Props) => {
   return (
     <div className="card bg-base-100 shadow-sm  hover:shadow-2xl  group cursor-pointer  transition-all duration-500 ease-in-out transform hover:scale-105 ">
       <figure className="group-hover:opacity-75 ">
-        <img className="h-96 w-full object-cover  " src={image} />
+        <img className="h-80 w-full object-cover  " src={image} />
       </figure>
       <div className="card-body p-4 ">
         <p className="text-secondary text-md font-medium">Article</p>

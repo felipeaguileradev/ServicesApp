@@ -42,7 +42,12 @@ const Navbar = () => {
     >
       {/* LOGO O NOMBRE */}
       <div className="flex-1 px-2 mx-2">
-        <span className="text-lg font-bold">TUSERVICIO</span>
+        <span className="text-lg font-bold">
+          Busca
+          <span className="text-primary text-3xl inline-block transform rotate-12 translate-y-1.5 -translate-x-0.5">
+            2
+          </span>
+        </span>
       </div>
       {/* MENU */}
       <div className="flex-none hidden px-2 mx-2 lg:flex">

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="p-10 bg-base-200 text-base-content rounded-t-box ">
+    <footer className="bg-base-300">
+      <div className="p-10 bg-base-300 text-base-content rounded-t-box ">
         <div className="container mx-auto footer grid-cols-2 ">
           <div>
             <span className="footer-title">Servicios</span>
@@ -83,7 +83,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="px-10 py-4 border-t bg-base-200 text-base-content border-base-300 rounded-b-box">
+      <div className="px-10 py-4 border-t bg-base-300 text-base-content border-base-100 rounded-b-box">
         <div className="container mx-auto footer">
           <div className="flex items-center">
             <figure>

@@ -79,10 +79,49 @@ module.exports = {
   }
 }
 
-// #24385b
 // #40587c
+// #24385b
 // #1b2c4c
 // bg #121f3d
-// bg-oscuro #03091e
+// bg-oscuro #
 // text #33b1ff
 // text hover #74caff
+
+// primary: '#570df8',
+// primary-focus': '#4506cb',
+// primary-content': '#ffffff',
+// secondary: '#f000b8',
+// secondary-focus': '#bd0091',
+// secondary-content': '#ffffff',
+// accent: '#37cdbe',
+// accent-focus': '#2aa79b',
+// accent-content': '#ffffff',
+// neutral: '#3d4451',
+// neutral-focus': '#2a2e37',
+// neutral-content': '#ffffff',
+// base-100': '#ffffff',
+// base-200': '#f9fafb',
+// base-300': '#d1d5db',
+// base-content': '#1f2937',
+// info: '#2094f3',
+// success: '#009485',
+// warning: '#ff9900',
+// error: '#ff5724'
+
+// #076DF2
+// #0583F2
+// #044D8C
+// #031926
+// #F0F2F2
+
+// #26547C
+// #EF476F
+// #FFD166
+// #06D6A0
+// #FFFCF9
+
+// #FF9F1C
+// #FFBF69
+// #FFFFFF
+// #CBF3F0
+// #2EC4B6
