@@ -1,18 +1,15 @@
-import React from 'react'
-
-// import HomeScreen from './components/Home/HomeScreen'
-// import { ThemeProvider } from './context/themeContext/ThemeContext'
 import AppRouter from './routes/AppRouter'
+import { ServicesProvider } from './context/servicesContext/ServicesContext'
 
-// const AppState = ({ children }: any) => {
-//   return <ThemeProvider>{children} </ThemeProvider>
-// }
+const AppState = ({ children }: { children: JSX.Element }) => {
+  return <ServicesProvider>{children}</ServicesProvider>
+}
 
 const ServicesApp = () => {
   return (
-    // <AppState>
-    <AppRouter />
-    // </AppState>
+    <AppState>
+      <AppRouter />
+    </AppState>
   )
 }
 

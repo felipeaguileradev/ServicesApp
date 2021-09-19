@@ -1,9 +1,14 @@
 import CardService from '../ui/CardService'
-import { servicesData } from '../data/dataTest'
-import { useEffect } from 'react'
+// import { servicesData } from '../data/dataTest'
+import { useContext, useEffect } from 'react'
 import { ScrollTop } from '../../helpers/ScrollTop'
+import { ServicesContext } from '../../context/servicesContext/ServicesContext'
 
 const ServicesScreen = () => {
+  const {
+    servicesState: { dataServices }
+  } = useContext(ServicesContext)
+
   useEffect(() => {
     ScrollTop()
   }, [])
@@ -29,12 +34,12 @@ const ServicesScreen = () => {
           </h2>
 
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6  sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {servicesData.map(service => (
+            {dataServices.map(service => (
               <CardService
                 key={service.id}
-                title={service.title}
+                title={service.servicesName}
                 description={service.description}
-                image={service.image}
+                image={service.images[0]?.url}
                 id={service.id}
               />
             ))}

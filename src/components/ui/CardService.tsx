@@ -4,7 +4,7 @@ interface Props {
   title: string
   description: string
   image: string
-  id: number
+  id: string
 }
 
 //  https://play.tailwindcss.com/bJGtVPu4BT
@@ -15,7 +15,9 @@ const CardService = ({ title, description, image, id }: Props) => {
       <div className="card bg-base-100 shadow-lg  hover:shadow-2xl group cursor-pointer  transition-all duration-500 ease-in-out transform hover:scale-105 ">
         <div className="card-body p-4 ">
           <h2 className="card-title">{title}</h2>
-          <p className="text-gray-400  font-light text-md">{description.slice(0, 30)}...</p>
+          <p className="text-gray-400  font-light text-md">
+            {description ? description.slice(0, 30) : 'No tiene descripción'}...
+          </p>
           {/* <div className="card-actions justify-end">
            <button className="btn btn-secondary">Ver más</button>
           </div> */}

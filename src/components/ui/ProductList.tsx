@@ -1,7 +1,14 @@
 import CardService from './CardService'
-import { servicesData } from '../data/dataTest'
+// import { servicesData } from '../data/dataTest'
+import { useContext } from 'react'
+import { ServicesContext } from '../../context/servicesContext/ServicesContext'
 
 const ProductList = () => {
+  const {
+    servicesState: { dataServices }
+  } = useContext(ServicesContext)
+
+  console.log(dataServices)
   return (
     <>
       <div className="py-20 bg-base-200 ">
@@ -11,15 +18,18 @@ const ProductList = () => {
           </h2>
 
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {servicesData.slice(0, 4).map(service => (
-              <CardService
-                key={service.id}
-                title={service.title}
-                description={service.description}
-                image={service.image}
-                id={service.id}
-              />
-            ))}
+            {!!dataServices &&
+              dataServices
+                .slice(0, 4)
+                .map(service => (
+                  <CardService
+                    key={service.id}
+                    title={service.servicesName}
+                    description={service.description}
+                    image={service.images[0]?.url}
+                    id={service.id}
+                  />
+                ))}
           </div>
         </div>
       </div>

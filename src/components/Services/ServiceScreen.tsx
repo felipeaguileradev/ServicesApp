@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { servicesData } from '../data/dataTest'
+// import { servicesData } from '../data/dataTest'
 import { ScrollTop } from '../../helpers/ScrollTop'
+import { ServicesContext, Services } from '../../context/servicesContext/ServicesContext'
 
 interface Params {
   id: string
@@ -9,17 +10,14 @@ interface Params {
 
 const ServiceScreen = () => {
   const { id } = useParams<Params>()
+  const {
+    servicesState: { dataServices }
+  } = useContext(ServicesContext)
 
-  const [data, setData] = useState({
-    id: 0,
-    title: '',
-    description: '',
-    image: ''
-  })
+  const [data, setData] = useState<Services>()
 
-  const getData = () => {
-    const info = servicesData.filter(service => service.id === Number(id))
-
+  const getData = async () => {
+    const info = dataServices.filter(service => service.id === id)
     setData(info[0])
   }
 
@@ -98,44 +96,46 @@ const ServiceScreen = () => {
         </nav> */}
 
           {/* <!-- Image gallery --> */}
-          <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-            <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-              <img
-                src={data.image}
-                alt="Two each of gray, white, and black shirts laying flat."
-                className="w-full h-full object-center object-cover"
-              />
-            </div>
-            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          {data && data?.images.length > 0 && (
+            <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+              <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
                 <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
-                  alt="Model wearing plain black basic tee."
+                  src={data?.images[0].url}
+                  alt="Two each of gray, white, and black shirts laying flat."
                   className="w-full h-full object-center object-cover"
                 />
               </div>
-              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+              <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+                <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+                  <img
+                    src={data?.images[1].url}
+                    alt="Model wearing plain black basic tee."
+                    className="w-full h-full object-center object-cover"
+                  />
+                </div>
+                <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+                  <img
+                    src={data?.images[2].url}
+                    alt="Model wearing plain gray basic tee."
+                    className="w-full h-full object-center object-cover"
+                  />
+                </div>
+              </div>
+              <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
                 <img
-                  src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg"
-                  alt="Model wearing plain gray basic tee."
+                  src={data?.images[3].url}
+                  alt="Model wearing plain white basic tee."
                   className="w-full h-full object-center object-cover"
                 />
               </div>
             </div>
-            <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
-                alt="Model wearing plain white basic tee."
-                className="w-full h-full object-center object-cover"
-              />
-            </div>
-          </div>
+          )}
 
           {/* <!-- Product info --> */}
           <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
               <h1 className="text-2xl font-extrabold tracking-tight text-base-content sm:text-3xl">
-                {data.title}
+                {data?.servicesName}
               </h1>
             </div>
 
@@ -143,7 +143,7 @@ const ServiceScreen = () => {
             <div className="mt-4 lg:mt-0 lg:row-span-3">
               <h2 className="sr-only">Información servicio</h2>
               <h3 className="text-sm text-base-content font-medium mb-2">Precio</h3>
-              <p className="text-3xl text-base-content">$192</p>
+              <p className="text-3xl text-base-content">${data?.price}</p>
 
               {/* <!-- Reviews --> */}
               {/* <div className="mt-6">
@@ -224,7 +224,7 @@ const ServiceScreen = () => {
                   <h3 className="text-sm text-base-content font-medium mb-2">Horario</h3>
 
                   <div>
-                    <p className="text-base">Lunes a viernes</p>
+                    <p className="text-base">{data?.horary}</p>
                   </div>
                 </div>
                 {/* <!-- modalidad --> */}
@@ -236,7 +236,7 @@ const ServiceScreen = () => {
                     {/* <div className="badge">neutral</div>
                     <div className="badge badge-primary">primary</div>
                     <div className="badge badge-secondary">secondary</div> */}
-                    <div className="badge badge-accent">Despacho</div>
+                    <div className="badge badge-accent">{data?.modality}</div>
                   </div>
                 </div>
 
@@ -246,7 +246,10 @@ const ServiceScreen = () => {
                     <h3 className="text-sm text-base-content font-medium">Redes Sociales</h3>
                   </div>
                   <div className="grid grid-cols-2 gap-10  ">
-                    <a className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                    <a
+                      href={data?.facebook}
+                      className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -258,7 +261,10 @@ const ServiceScreen = () => {
                         <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
                       </svg>
                     </a>
-                    <a className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                    <a
+                      href={data?.instagram}
+                      className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -282,11 +288,11 @@ const ServiceScreen = () => {
                 <h3 className="sr-only">Descripción</h3>
 
                 <div className="space-y-6">
-                  <p className="text-base text-base-content">{data.description}</p>
+                  <p className="text-base text-base-content">{data?.description}</p>
                 </div>
               </div>
 
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <h3 className="text-sm font-medium text-base-content">Highlights</h3>
 
                 <div className="mt-4">
@@ -308,15 +314,15 @@ const ServiceScreen = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <h2 className="text-sm font-medium text-base-content">Detalles</h2>
 
                 <div className="mt-4 space-y-6">
-                  <p className="text-sm text-base-content">{data.description}</p>
+                  <p className="text-sm text-base-content">{data?.description}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
