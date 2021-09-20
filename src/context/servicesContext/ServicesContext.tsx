@@ -1,6 +1,7 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { createContext, useReducer } from 'react'
 import { servicesReducer } from './servicesReducer'
+import { getServicesAxios } from '../../helpers/getServices'
 
 // Definir cómo luce, que información tendré aquí
 export interface ServicesState {
@@ -52,11 +53,8 @@ export const ServicesProvider = ({ children }: { children: JSX.Element }) => {
   const [servicesState, dispatch] = useReducer(servicesReducer, servicesInitialState)
 
   const getServices = async () => {
-    const resp = await axios.get('http://localhost:4000/api/client')
-    if (resp.data.ok) {
-      // console.log(resp.data.clients)
-      dispatch({ type: 'getServices', payload: resp.data.clients })
-    }
+    const resp = await getServicesAxios()
+    dispatch({ type: 'getServices', payload: resp })
   }
 
   return (
