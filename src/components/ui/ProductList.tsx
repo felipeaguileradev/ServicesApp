@@ -8,7 +8,6 @@ const ProductList = () => {
     servicesState: { dataServices }
   } = useContext(ServicesContext)
 
-  console.log(dataServices)
   return (
     <>
       <div className="py-20 bg-base-200 ">

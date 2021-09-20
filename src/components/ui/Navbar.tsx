@@ -11,7 +11,7 @@ const Navbar = () => {
   useEffect(() => {
     themeChange(false)
     const theme = document.querySelector('html')?.getAttribute('data-theme')
-    console.log(theme)
+
     if (theme === 'dark') {
       setDarkTheme(true)
     } else {
