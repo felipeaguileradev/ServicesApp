@@ -212,7 +212,7 @@ const Navbar = () => {
 
         {/* MENU MOBILE */}
       </nav>
-      {/* {openMenu && ( */}
+
       <div
         className={`fixed  top-0 inset-x-0 p-2 transition transform origin-top-right lg:hidden ${
           openMenu
@@ -267,6 +267,7 @@ const Navbar = () => {
                     exact
                     activeClassName="btn-active"
                     className="btn btn-ghost rounded-btn"
+                    onClick={() => setOpenMenu(false)}
                   >
                     {item.icon}
                     {item.name}
@@ -333,7 +334,6 @@ const Navbar = () => {
             </div> */}
         </div>
       </div>
-      {/* )} */}
     </div>
   )
 }
