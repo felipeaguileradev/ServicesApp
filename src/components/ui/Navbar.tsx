@@ -314,33 +314,26 @@ const Navbar = () => {
               <span className="text-center block font-semibold uppercase">Cambio de tema</span>
               <div className="lg:hidden flex justify-center ">
                 <div className="flex items-center space-x-4">
-                  <svg width="32" height="32" fill="none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    // className="h-6 w-6"
+                    viewBox="0 0 24 24"
+                    width="30"
+                    height="30"
+                    fill={darkTheme ? 'none' : 'currentColor'}
+                    stroke="currentColor"
+                    className={
+                      darkTheme
+                        ? 'transition-colors duration-200 text-gray-300'
+                        : 'transition-colors duration-200 text-1-yellow-500 '
+                    }
+                  >
                     <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M16 2a1.4 1.4 0 011.4 1.4v1.4a1.4 1.4 0 11-2.8 0V3.4A1.4 1.4 0 0116 2zM6.1 6.1a1.4 1.4 0 011.98 0l.99.99a1.4 1.4 0 11-1.98 1.98l-.99-.99a1.4 1.4 0 010-1.98zm19.8 0a1.4 1.4 0 010 1.98l-.99.99a1.4 1.4 0 01-1.98-1.98l.99-.99a1.4 1.4 0 011.98 0zM9 16a7 7 0 1114 0 7 7 0 01-14 0zm-7 0a1.4 1.4 0 011.4-1.4h1.4a1.4 1.4 0 110 2.8H3.4A1.4 1.4 0 012 16zm23.8 0a1.4 1.4 0 011.4-1.4h1.4a1.4 1.4 0 110 2.8h-1.4a1.4 1.4 0 01-1.4-1.4zm-2.87 6.93a1.4 1.4 0 011.98 0l.99.99a1.4 1.4 0 01-1.98 1.98l-.99-.99a1.4 1.4 0 010-1.98zm-15.84 0a1.4 1.4 0 011.98 1.98l-.99.99a1.4 1.4 0 01-1.98-1.98l.99-.99zM16 25.8a1.4 1.4 0 011.4 1.4v1.4a1.4 1.4 0 11-2.8 0v-1.4a1.4 1.4 0 011.4-1.4z"
-                      fill="url(#paint0_linear)"
-                    ></path>
-                    <defs>
-                      <linearGradient
-                        id="paint0_linear"
-                        x1="2"
-                        y1="2"
-                        x2="30"
-                        y2="30"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop
-                          className="transition-all duration-200"
-                          stopColor={darkTheme ? '#d4d4d8' : '#FACC15'}
-                        ></stop>
-                        <stop
-                          className="transition-all duration-200 "
-                          offset="1"
-                          stopColor={darkTheme ? '#d4d4d8' : '#FA9D16'}
-                        ></stop>
-                      </linearGradient>
-                    </defs>
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
                   </svg>
                   <input
                     type="checkbox"
@@ -355,8 +348,8 @@ const Navbar = () => {
                     fill="currentColor"
                     className={
                       darkTheme
-                        ? 'transition-colors duration-200 text-gray-900 '
-                        : 'transition-colors duration-200 text-gray-300 '
+                        ? 'transition-colors duration-200 text-gray-300 '
+                        : 'transition-colors duration-200 text-gray-900 '
                     }
                   >
                     <path
