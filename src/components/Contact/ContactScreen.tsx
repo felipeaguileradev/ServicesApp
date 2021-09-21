@@ -35,7 +35,7 @@ const ContactScreen = () => {
       <div className="bg-base-200 text-gray-100 px-8 py-20">
         <div className="text-center w-full">
           <span className="text-center text-base-content text-xl ">Envianos un mensaje a</span>
-          <h2 className="text-center text-base-content text-4xl my-5 font-bold leading-tight">
+          <h2 className="text-center text-base-content text-lg sm:text-2xl md:text-4xl my-5 font-bold leading-tight">
             felipe.aguilera.dev@gmail.com
           </h2>
           <h3 className="text-center text-base-content text-3xl my-5 font-bold leading-tight">

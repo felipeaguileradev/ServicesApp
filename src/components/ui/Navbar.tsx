@@ -7,7 +7,7 @@ const Navbar = () => {
   // const location = useLocation()
   const [darkTheme, setDarkTheme] = useState(false)
   const [navbarActive, setNavbarActive] = useState(false)
-  const [openMenu, setOpenMenu] = useState(true)
+  const [openMenu, setOpenMenu] = useState(false)
 
   useEffect(() => {
     themeChange(false)
