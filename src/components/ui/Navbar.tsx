@@ -324,7 +324,7 @@ const Navbar = () => {
                     stroke="currentColor"
                     className={
                       darkTheme
-                        ? 'transition-colors duration-200 text-gray-300'
+                        ? 'transition-colors duration-200 text-gray-500'
                         : 'transition-colors duration-200 text-1-yellow-500 '
                     }
                   >
@@ -343,20 +343,24 @@ const Navbar = () => {
                     onChange={changeTheme}
                   ></input>
                   <svg
-                    width="24"
-                    height="24"
-                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
                     className={
                       darkTheme
-                        ? 'transition-colors duration-200 text-gray-300 '
-                        : 'transition-colors duration-200 text-gray-900 '
+                        ? 'transition-colors duration-200 text-gray-100 '
+                        : 'transition-colors duration-200 text-gray-500 '
                     }
+                    fill={darkTheme ? 'currentColor' : 'none'}
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    stroke="currentColor"
                   >
                     <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M9.353 2.939a1 1 0 01.22 1.08 8 8 0 0010.408 10.408 1 1 0 011.301 1.3A10.003 10.003 0 0112 22C6.477 22 2 17.523 2 12c0-4.207 2.598-7.805 6.273-9.282a1 1 0 011.08.22z"
-                    ></path>
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    />
                   </svg>
                 </div>
               </div>
