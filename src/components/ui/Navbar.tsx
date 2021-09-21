@@ -7,7 +7,7 @@ const Navbar = () => {
   // const location = useLocation()
   const [darkTheme, setDarkTheme] = useState(false)
   const [navbarActive, setNavbarActive] = useState(false)
-  const [openMenu, setOpenMenu] = useState(false)
+  const [openMenu, setOpenMenu] = useState(true)
 
   useEffect(() => {
     themeChange(false)
@@ -35,8 +35,70 @@ const Navbar = () => {
 
   window.addEventListener('scroll', changeBackground)
   // navbarActive && location.pathname === '/'
+
+  const pages = [
+    {
+      name: 'Inicio',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="inline-block w-5 mr-2 stroke-current text-primary"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          ></path>
+        </svg>
+      ),
+      to: '/'
+    },
+    {
+      name: 'Servicios',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="inline-block w-5 mr-2 stroke-current text-primary"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          ></path>
+        </svg>
+      ),
+      to: '/services'
+    },
+    {
+      name: 'Contacto',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="inline-block w-5 mr-2 stroke-current text-primary"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          ></path>
+        </svg>
+      ),
+      to: '/contact'
+    }
+  ]
+
+  console.log(openMenu)
   return (
-    <>
+    <div className="relative">
       <nav
         className={
           navbarActive
@@ -56,69 +118,18 @@ const Navbar = () => {
         {/* MENU */}
         <div className="flex-none hidden px-2 mx-2 lg:flex">
           <div className="flex items-stretch">
-            <NavLink
-              to="/"
-              exact
-              activeClassName="btn-active"
-              className="btn btn-ghost btn-sm rounded-btn"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-5 mr-2 stroke-current"
+            {pages.map(item => (
+              <NavLink
+                key={item.name}
+                to={item.to}
+                exact
+                activeClassName="btn-active"
+                className="btn btn-ghost btn-sm rounded-btn"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                ></path>
-              </svg>
-              Inicio
-            </NavLink>
-            <NavLink
-              to="/services"
-              exact
-              activeClassName="btn-active"
-              className="btn btn-ghost btn-sm rounded-btn"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-5 mr-2 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                ></path>
-              </svg>
-              Servicios
-            </NavLink>
-            <NavLink
-              to="/contact"
-              exact
-              activeClassName="btn-active"
-              className="btn btn-ghost btn-sm rounded-btn"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-5 mr-2 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                ></path>
-              </svg>
-              Contacto
-            </NavLink>
+                {item.icon}
+                {item.name}
+              </NavLink>
+            ))}
           </div>
         </div>
 
@@ -180,8 +191,9 @@ const Navbar = () => {
         </div>
 
         {/* ICONO MENU MOBILE */}
-        <div className="flex-none lg:hidden">
-          <button className="btn btn-square btn-ghost" onClick={() => setOpenMenu(true)}>
+        <div className="lg:hidden">
+          {/* <button className="btn btn-square btn-ghost" onClick={() => setOpenMenu(true)}> */}
+          <button className="btn btn-primary" onClick={() => setOpenMenu(true)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -197,120 +209,74 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
+
+        {/* MENU MOBILE */}
       </nav>
-
-      {/* TODO:probando */}
-      {/* MENU MOBILE */}
-      {openMenu && (
-        <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-40">
-          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-base-200 divide-y-2 divide-gray-50">
-            <div className="pt-5 pb-6 px-5">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <span className="text-lg font-bold">
-                    Busca
-                    <span className="text-primary text-3xl inline-block transform rotate-12 translate-y-1.5 -translate-x-0.5">
-                      2
-                    </span>
+      {/* {openMenu && ( */}
+      <div
+        className={`fixed  top-0 inset-x-0 p-2 transition transform origin-top-right lg:hidden ${
+          openMenu
+            ? 'duration-200 ease-out opacity-100 scale-100 z-50 '
+            : 'duration-100 ease-in opacity-0 scale-95 z-30 '
+        }`}
+      >
+        <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-base-100 divide-y-2 divide-gray-50 w-full">
+          <div className="pt-5 pb-6 px-5">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <span className="text-lg font-bold">
+                  Busca
+                  <span className="text-primary text-3xl inline-block transform rotate-12 translate-y-1.5 -translate-x-0.5">
+                    2
                   </span>
-                </div>
-
-                <div className="-mr-2">
-                  <button
-                    type="button"
-                    className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                    onClick={() => setOpenMenu(false)}
-                  >
-                    <span className="sr-only">Close menu</span>
-                    <svg
-                      className="h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                </span>
               </div>
 
-              <div className="mt-6">
-                <nav className="grid gap-y-2">
-                  <NavLink
-                    to="/"
-                    exact
-                    activeClassName="btn-active"
-                    className="btn btn-ghost rounded-btn"
+              <div className="-mr-2">
+                <button
+                  type="button"
+                  className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                  onClick={() => setOpenMenu(false)}
+                >
+                  <span className="sr-only">Close menu</span>
+                  <svg
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="inline-block w-5 mr-2 stroke-current text-primary"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                      ></path>
-                    </svg>
-                    Inicio
-                  </NavLink>
-                  <NavLink
-                    to="/services"
-                    exact
-                    activeClassName="btn-active"
-                    className="btn btn-ghost rounded-btn"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="inline-block w-5 mr-2 stroke-current text-primary"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                      ></path>
-                    </svg>
-                    Servicios
-                  </NavLink>
-                  <NavLink
-                    to="/contact"
-                    exact
-                    activeClassName="btn-active"
-                    className="btn btn-ghost rounded-btn"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="inline-block w-5 mr-2 stroke-current text-primary"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                      ></path>
-                    </svg>
-                    Contacto
-                  </NavLink>
-                </nav>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
               </div>
             </div>
 
-            <div className="py-6 px-5 space-y-6">
+            <div className="mt-6">
+              <nav className="grid gap-y-2">
+                {pages.map(item => (
+                  <NavLink
+                    key={item.name}
+                    to={item.to}
+                    exact
+                    activeClassName="btn-active"
+                    className="btn btn-ghost rounded-btn"
+                  >
+                    {item.icon}
+                    {item.name}
+                  </NavLink>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {/* <div className="py-6 px-5 space-y-6">
               <span className="text-center block font-semibold uppercase">Cambio de tema</span>
               <div className="lg:hidden flex justify-center ">
                 <div className="flex items-center space-x-4">
@@ -364,11 +330,11 @@ const Navbar = () => {
                   </svg>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> */}
         </div>
-      )}
-    </>
+      </div>
+      {/* )} */}
+    </div>
   )
 }
 
