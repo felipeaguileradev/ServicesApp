@@ -96,7 +96,6 @@ const Navbar = () => {
     }
   ]
 
-  console.log(openMenu)
   return (
     <div className="relative">
       <nav
