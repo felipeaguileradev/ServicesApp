@@ -5,11 +5,12 @@ interface Props {
   description: string
   image: string
   id: string
+  category: string
 }
 
 //  https://play.tailwindcss.com/bJGtVPu4BT
 
-const CardService = ({ title, description, image, id }: Props) => {
+const CardService = ({ title, description, image, id, category }: Props) => {
   return (
     <>
       <div className="card bg-base-100 shadow-lg  hover:shadow-2xl group cursor-pointer  transition-all duration-500 ease-in-out transform hover:scale-105 ">
@@ -27,7 +28,7 @@ const CardService = ({ title, description, image, id }: Props) => {
         </figure>
         <div className="flex items-center justify-between px-4 py-3 bg-gray-900">
           {/* <h1 className="text-gray-200 font-bold text-xl">Article</h1> */}
-          <p className="text-gray-200 text-md font-medium">Servicio</p>
+          <p className="text-gray-200 text-md font-medium">{category}</p>
           <Link to={`/services/${id}`} className="btn btn-sm">
             ver más
           </Link>

@@ -1,12 +1,20 @@
 import CardService from './CardService'
 // import { servicesData } from '../data/dataTest'
-import { useContext } from 'react'
-import { ServicesContext } from '../../context/servicesContext/ServicesContext'
+import { useContext, useEffect, useState } from 'react'
+import { ServicesContext, Services } from '../../context/servicesContext/ServicesContext'
 
 const ProductList = () => {
   const {
     servicesState: { dataServices }
   } = useContext(ServicesContext)
+  const [services, setServices] = useState<Services[]>()
+
+  useEffect(() => {
+    if (dataServices) {
+      const dataFiltered = dataServices.filter(services => services.servicesName)
+      setServices(dataFiltered)
+    }
+  }, [dataServices])
 
   return (
     <>
@@ -17,8 +25,8 @@ const ProductList = () => {
           </h2>
 
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {!!dataServices &&
-              dataServices
+            {!!services &&
+              services
                 .slice(0, 4)
                 .map(service => (
                   <CardService
@@ -27,6 +35,7 @@ const ProductList = () => {
                     description={service.description}
                     image={service.images[0]?.url}
                     id={service.id}
+                    category={service.category}
                   />
                 ))}
           </div>
