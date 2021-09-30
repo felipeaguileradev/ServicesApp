@@ -138,6 +138,9 @@ const ServiceScreen = () => {
               <h1 className="text-2xl font-extrabold tracking-tight text-base-content sm:text-3xl">
                 {data?.servicesName}
               </h1>
+              <h3 className="text-sm md:text-base text-base-content font-medium mt-1">
+                {data?.name} {data?.lastname}
+              </h3>
             </div>
 
             {/* <!-- Informacion --> */}
@@ -145,6 +148,8 @@ const ServiceScreen = () => {
               <h2 className="sr-only">Información servicio</h2>
               {/* <h3 className="text-sm text-base-content font-medium mb-2">Precio</h3>
               <p className="text-3xl text-base-content">${data?.price}</p> */}
+
+              {/* <p className="text-3xl text-base-content">${data?.price}</p> */}
 
               {/* <!-- Reviews --> */}
               {/* <div className="mt-6">
