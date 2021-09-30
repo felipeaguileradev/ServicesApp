@@ -294,7 +294,10 @@ const ServiceScreen = () => {
                 <h3 className="sr-only">Descripción</h3>
 
                 <div className="space-y-6">
-                  <p className="text-base text-base-content">{data?.description}</p>
+                  <p
+                    className="text-base text-base-content"
+                    dangerouslySetInnerHTML={{ __html: data?.description || '' }}
+                  ></p>
                 </div>
               </div>
 
