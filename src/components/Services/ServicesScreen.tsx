@@ -16,7 +16,7 @@ const ServicesScreen = () => {
 
   useEffect(() => {
     if (dataServices) {
-      const dataFiltered = dataServices.filter(services => services.servicesName)
+      const dataFiltered = dataServices.filter(services => services.status)
       setServices(dataFiltered)
     }
   }, [dataServices])

@@ -9,10 +9,22 @@ const ProductList = () => {
   } = useContext(ServicesContext)
   const [services, setServices] = useState<Services[]>()
 
+  const sortData = (data: Services[]) => {
+    const datos = data.sort((a, b) => {
+      if (a.updatedAt < b.updatedAt) return 1
+      if (a.updatedAt > b.updatedAt) return -1
+
+      return 0
+    })
+    return datos
+  }
+
   useEffect(() => {
     if (dataServices) {
-      const dataFiltered = dataServices.filter(services => services.servicesName)
-      setServices(dataFiltered)
+      const dataFiltered = dataServices.filter(services => services.status)
+      const orderedData = sortData(dataFiltered)
+      const firstFourtElement = orderedData.slice(0, 4)
+      setServices(firstFourtElement)
     }
   }, [dataServices])
 

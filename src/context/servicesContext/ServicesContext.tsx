@@ -8,26 +8,29 @@ export interface ServicesState {
   dataServices: Array<Services>
 }
 
-export interface Services {
-  name: string
+export interface IClient {
   id: string
-  servicesName: string
-  description: string
-  horary: string
-  images: Array<ImagesServices>
-  email: string
+  _id?: string
+  name: string
   lastname: string
-  address: string
-  phone: string
-  city: string
-  number: string
-  status: string
+}
+
+export interface Services {
   category: string
+  client: IClient
+  description: string
+  facebook: string
+  horary: string
+  id: string
+  images: Array<ImagesServices>
+  instagram: string
   modality: string
   price: string
+  servicesName: string
+  status: boolean
   wsp: string
-  facebook: string
-  instagram: string
+  updatedAt: string
+  createdAt: string
 }
 
 interface ImagesServices {
