@@ -2,6 +2,7 @@ import CardService from './CardService'
 // import { servicesData } from '../data/dataTest'
 import { useContext, useEffect, useState } from 'react'
 import { ServicesContext, Services } from '../../context/servicesContext/ServicesContext'
+import { Link } from 'react-router-dom'
 
 const ProductList = () => {
   const {
@@ -50,6 +51,27 @@ const ProductList = () => {
                     category={service.category}
                   />
                 ))}
+          </div>
+          <div className="py-3  flex justify-end ">
+            <Link to="/services" className="link link-hover">
+              <span className="flex justify-center">
+                Ver más
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-5 mt-1"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </Link>
           </div>
         </div>
       </div>
