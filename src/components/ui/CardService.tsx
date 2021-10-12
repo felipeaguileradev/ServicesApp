@@ -13,7 +13,7 @@ interface Props {
 const CardService = ({ title, description, image, id, category }: Props) => {
   return (
     <>
-      <div className="card bg-base-100 shadow-lg  hover:shadow-2xl group cursor-pointer  transition-all duration-500 ease-in-out transform hover:scale-105 ">
+      <div className="card bg-base-100 shadow-lg hover:shadow-2xl group cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 ">
         <div className="card-body p-4 ">
           <h2 className="card-title">{title}</h2>
           <p

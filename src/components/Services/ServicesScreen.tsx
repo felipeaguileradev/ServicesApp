@@ -1,8 +1,8 @@
 import CardService from '../ui/CardService'
-// import { servicesData } from '../data/dataTest'
 import { useContext, useEffect, useState } from 'react'
 import { ScrollTop } from '../../helpers/ScrollTop'
 import { ServicesContext, Services } from '../../context/servicesContext/ServicesContext'
+import CardSkeleton from '../ui/CardSkeleton'
 
 const ServicesScreen = () => {
   const {
@@ -20,6 +20,8 @@ const ServicesScreen = () => {
       setServices(dataFiltered)
     }
   }, [dataServices])
+
+  const dataSkeleton = [1, 2, 3, 4, 5, 6, 7, 8]
 
   return (
     <>
@@ -41,18 +43,27 @@ const ServicesScreen = () => {
             Productos y Servicios
           </h2>
 
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6  sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {!!services &&
-              services.map(service => (
-                <CardService
-                  key={service.id}
-                  title={service.servicesName}
-                  description={service.description}
-                  image={service.images[0]?.url}
-                  id={service.id}
-                  category={service.category}
-                />
-              ))}
+          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {!!services && services.length > 0 ? (
+              <>
+                {services.slice(0, 4).map(service => (
+                  <CardService
+                    key={service.id}
+                    title={service.servicesName}
+                    description={service.description}
+                    image={service.images[0]?.url}
+                    id={service.id}
+                    category={service.category}
+                  />
+                ))}
+              </>
+            ) : (
+              <>
+                {dataSkeleton.map(element => (
+                  <CardSkeleton key={element} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -3,12 +3,13 @@ import CardService from './CardService'
 import { useContext, useEffect, useState } from 'react'
 import { ServicesContext, Services } from '../../context/servicesContext/ServicesContext'
 import { Link } from 'react-router-dom'
+import CardSkeleton from './CardSkeleton'
 
 const ProductList = () => {
   const {
     servicesState: { dataServices }
   } = useContext(ServicesContext)
-  const [services, setServices] = useState<Services[]>()
+  const [services, setServices] = useState<Services[]>([])
 
   const sortData = (data: Services[]) => {
     const datos = data.sort((a, b) => {
@@ -29,6 +30,7 @@ const ProductList = () => {
     }
   }, [dataServices])
 
+  const dataSkeleton = [1, 2, 3, 4]
   return (
     <>
       <div className="py-20 bg-base-200 ">
@@ -37,11 +39,10 @@ const ProductList = () => {
             Últimos agregados
           </h2>
 
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {!!services &&
-              services
-                .slice(0, 4)
-                .map(service => (
+          {!!services && services.length > 0 ? (
+            <>
+              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                {services.slice(0, 4).map(service => (
                   <CardService
                     key={service.id}
                     title={service.servicesName}
@@ -51,28 +52,36 @@ const ProductList = () => {
                     category={service.category}
                   />
                 ))}
-          </div>
-          <div className="py-3  flex justify-end ">
-            <Link to="/services" className="link link-hover">
-              <span className="flex justify-center">
-                Ver más
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-5 mt-1"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </span>
-            </Link>
-          </div>
+              </div>
+              <div className="py-3  flex justify-end ">
+                <Link to="/services" className="link link-hover">
+                  <span className="flex justify-center">
+                    Ver más
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-5 mt-1"
+                      fill="none"
+                      viewBox="0 0 20 20"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+              {dataSkeleton.map(element => (
+                <CardSkeleton key={element} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>
