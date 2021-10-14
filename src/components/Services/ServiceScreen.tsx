@@ -28,7 +28,6 @@ const ServiceScreen = () => {
     }
   }, [dataServices])
 
-  console.log(data)
   return (
     <>
       <div className="hero h-96 pt-16 overflow-hidden bg-gradient-to-br from-purple-500 to-indigo-500 text-primary-content">
