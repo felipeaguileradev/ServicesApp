@@ -23,6 +23,8 @@ const ServicesScreen = () => {
 
   const dataSkeleton = [1, 2, 3, 4, 5, 6, 7, 8]
 
+  console.log(services)
+
   return (
     <>
       <div className="hero h-80 pt-16 overflow-hidden  bg-gradient-to-r from-primary to-accent text-primary-content">
@@ -46,7 +48,7 @@ const ServicesScreen = () => {
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {!!services && services.length > 0 ? (
               <>
-                {services.slice(0, 4).map(service => (
+                {services.map(service => (
                   <CardService
                     key={service.id}
                     title={service.servicesName}
