@@ -23,8 +23,6 @@ const ServicesScreen = () => {
 
   const dataSkeleton = [1, 2, 3, 4, 5, 6, 7, 8]
 
-  console.log(services)
-
   return (
     <>
       <div className="hero h-80 pt-16 overflow-hidden  bg-gradient-to-r from-primary to-accent text-primary-content">
