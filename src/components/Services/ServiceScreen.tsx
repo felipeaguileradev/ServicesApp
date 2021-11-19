@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-// import { servicesData } from '../data/dataTest'
+import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox'
 import { ScrollTop } from '../../helpers/ScrollTop'
 import { ServicesContext, Services } from '../../context/servicesContext/ServicesContext'
 
@@ -29,19 +29,20 @@ const ServiceScreen = () => {
   }, [dataServices])
 
   return (
-    <>
-      <div className="hero h-96 pt-16 overflow-hidden bg-gradient-to-br from-purple-500 to-indigo-500 text-primary-content">
-        <div className="text-center hero-content">
-          <div className="max-w-xl">
-            <h1 className="mb-5 text-4xl sm:text-6xl lg:text-7xl font-extrabold">
-              Productos y Servicios
-            </h1>
+    <SimpleReactLightbox>
+      <SRLWrapper>
+        <div className="hero h-96 pt-16 overflow-hidden bg-gradient-to-br from-purple-500 to-indigo-500 text-primary-content">
+          <div className="text-center hero-content">
+            <div className="max-w-xl">
+              <h1 className="mb-5 text-4xl sm:text-6xl lg:text-7xl font-extrabold">
+                Productos y Servicios
+              </h1>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="bg-base-200">
-        <div className="pt-6">
-          {/* <nav aria-label="Breadcrumb">
+        <div className="bg-base-200">
+          <div className="pt-6">
+            {/* <nav aria-label="Breadcrumb">
           <ol
             role="list"
             className="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8"
@@ -96,64 +97,64 @@ const ServiceScreen = () => {
           </ol>
         </nav> */}
 
-          {/* <!-- Image gallery --> */}
-          {data && data?.images.length > 0 && (
-            <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-              <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                <img
-                  src={data?.images[1].url}
-                  alt={data.servicesName}
-                  className="w-full h-full object-center object-cover"
-                />
-              </div>
-              <div className="lg:grid lg:grid-cols-1 lg:gap-y-8">
-                <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+            {/* <!-- Image gallery --> */}
+            {data && data?.images.length > 0 && (
+              <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+                <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
                   <img
-                    src={data?.images[0].url}
+                    src={data?.images[1].url}
                     alt={data.servicesName}
                     className="w-full h-full object-center object-cover"
                   />
                 </div>
-                <div className="hidden  lg:block lg:aspect-w-3  lg:aspect-h-2  lg:rounded-lg  lg:overflow-hidden">
+                <div className="lg:grid lg:grid-cols-1 lg:gap-y-8">
+                  <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+                    <img
+                      src={data?.images[0].url}
+                      alt={data.servicesName}
+                      className="w-full h-full object-center object-cover"
+                    />
+                  </div>
+                  <div className="hidden  lg:block lg:aspect-w-3  lg:aspect-h-2  lg:rounded-lg  lg:overflow-hidden">
+                    <img
+                      src={data?.images[2].url}
+                      alt={data.servicesName}
+                      className="w-full h-full object-center object-cover"
+                    />
+                  </div>
+                </div>
+                {/* <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4"> */}
+                <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
                   <img
-                    src={data?.images[2].url}
+                    src={data?.images[3].url}
                     alt={data.servicesName}
                     className="w-full h-full object-center object-cover"
                   />
                 </div>
               </div>
-              {/* <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4"> */}
-              <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                <img
-                  src={data?.images[3].url}
-                  alt={data.servicesName}
-                  className="w-full h-full object-center object-cover"
-                />
+            )}
+
+            {/* <!-- Product info --> */}
+            <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+              <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                <h1 className="text-2xl font-extrabold tracking-tight text-base-content sm:text-3xl">
+                  {data?.servicesName}
+                </h1>
+                <h3 className="text-sm md:text-base text-base-content font-medium mt-1">
+                  {data?.client.name} {data?.client.lastname}
+                </h3>
               </div>
-            </div>
-          )}
 
-          {/* <!-- Product info --> */}
-          <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
-            <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-              <h1 className="text-2xl font-extrabold tracking-tight text-base-content sm:text-3xl">
-                {data?.servicesName}
-              </h1>
-              <h3 className="text-sm md:text-base text-base-content font-medium mt-1">
-                {data?.client.name} {data?.client.lastname}
-              </h3>
-            </div>
-
-            {/* <!-- Informacion --> */}
-            <div className="mt-4 lg:mt-0 lg:row-span-3">
-              <h2 className="sr-only">Información servicio</h2>
-              {/* <h3 className="text-sm text-base-content font-medium mb-2">Precio</h3>
+              {/* <!-- Informacion --> */}
+              <div className="mt-4 lg:mt-0 lg:row-span-3">
+                <h2 className="sr-only">Información servicio</h2>
+                {/* <h3 className="text-sm text-base-content font-medium mb-2">Precio</h3>
               <p className="text-3xl text-base-content">${data?.price}</p> */}
 
-              {/* <p className="text-3xl text-base-content">${data?.price}</p> */}
+                {/* <p className="text-3xl text-base-content">${data?.price}</p> */}
 
-              {/* <!-- Reviews --> */}
-              {/* <div className="mt-6">
+                {/* <!-- Reviews --> */}
+                {/* <div className="mt-6">
                 <h3 className="sr-only">Reviews</h3>
                 <div className="flex items-center">
                   <div className="flex items-center">
@@ -162,7 +163,7 @@ const ServiceScreen = () => {
   
                   Active: "text-gray-900", Default: "text-gray-200"
                 --> */}
-              {/* <svg
+                {/* <svg
                       className="text-gray-900 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -172,8 +173,8 @@ const ServiceScreen = () => {
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg> */}
 
-              {/* <!-- Heroicon name: solid/star --> */}
-              {/* <svg
+                {/* <!-- Heroicon name: solid/star --> */}
+                {/* <svg
                       className="text-gray-900 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -183,8 +184,8 @@ const ServiceScreen = () => {
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg> */}
 
-              {/* <!-- Heroicon name: solid/star --> */}
-              {/* <svg
+                {/* <!-- Heroicon name: solid/star --> */}
+                {/* <svg
                       className="text-gray-900 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -194,8 +195,8 @@ const ServiceScreen = () => {
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg> */}
 
-              {/* <!-- Heroicon name: solid/star --> */}
-              {/* <svg
+                {/* <!-- Heroicon name: solid/star --> */}
+                {/* <svg
                       className="text-gray-900 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -205,8 +206,8 @@ const ServiceScreen = () => {
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg> */}
 
-              {/* <!-- Heroicon name: solid/star --> */}
-              {/*  <svg
+                {/* <!-- Heroicon name: solid/star --> */}
+                {/*  <svg
                       className="text-gray-200 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -226,133 +227,133 @@ const ServiceScreen = () => {
                 </div>
               </div> */}
 
-              <div className="mt-10">
-                <div>
-                  <h3 className="text-sm text-base-content font-medium mb-2">Horario</h3>
-
-                  <div>
-                    <p className="text-base">{data?.horary}</p>
-                  </div>
-                </div>
-                {/* <!-- modalidad --> */}
                 <div className="mt-10">
-                  <h3 className="text-sm text-base-content font-medium mb-2">Modalidad</h3>
-                  {/* producto => despacho o retiro */}
-                  {/* srvicio => online o presencial */}
                   <div>
-                    {/* <div className="badge">neutral</div>
+                    <h3 className="text-sm text-base-content font-medium mb-2">Horario</h3>
+
+                    <div>
+                      <p className="text-base">{data?.horary}</p>
+                    </div>
+                  </div>
+                  {/* <!-- modalidad --> */}
+                  <div className="mt-10">
+                    <h3 className="text-sm text-base-content font-medium mb-2">Modalidad</h3>
+                    {/* producto => despacho o retiro */}
+                    {/* srvicio => online o presencial */}
+                    <div>
+                      {/* <div className="badge">neutral</div>
                     <div className="badge badge-primary">primary</div>
                     <div className="badge badge-secondary">secondary</div> */}
 
-                    <div className="badge badge-primary">{data?.modality}</div>
-                  </div>
-                </div>
-
-                {/* <!-- Redes sociales --> */}
-                <div className="mt-10">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-sm text-base-content font-medium">Redes Sociales</h3>
-                  </div>
-                  <div className="grid grid-cols-2 gap-10">
-                    {data?.facebook ? (
-                      <a
-                        href={data?.facebook}
-                        target="_blank"
-                        className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-200 sm:flex-1 bg-white shadow-sm  cursor-pointer"
-                        rel="noreferrer"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          className="text-primary h-full w-10"
-                          fill="currentColor"
-                        >
-                          <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
-                        </svg>
-                      </a>
-                    ) : (
-                      <button
-                        className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 bg-white shadow-sm  cursor-pointer"
-                        disabled
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          className="text-neutral h-full w-10"
-                          fill="currentColor"
-                        >
-                          <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
-                        </svg>
-                      </button>
-                    )}
-
-                    {data?.instagram ? (
-                      <a
-                        href={data?.instagram}
-                        target="_blank"
-                        className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-200 sm:flex-1  bg-white shadow-sm cursor-pointer"
-                        rel="noreferrer"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          className="text-primary h-full w-10"
-                          fill="currentColor"
-                        >
-                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                      </a>
-                    ) : (
-                      <button
-                        className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 bg-white shadow-sm  cursor-pointer"
-                        disabled
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          className="text-neutral h-full w-10"
-                          fill="currentColor"
-                        >
-                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-                  {data?.wsp && (
-                    <div className="mt-5">
-                      <h3 className="text-sm text-base-content font-medium mb-2">Whatsapp</h3>
-                      <div>
-                        <p className="text-base">{data?.wsp}</p>
-                      </div>
+                      <div className="badge badge-primary">{data?.modality}</div>
                     </div>
-                  )}
+                  </div>
+
+                  {/* <!-- Redes sociales --> */}
+                  <div className="mt-10">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-sm text-base-content font-medium">Redes Sociales</h3>
+                    </div>
+                    <div className="grid grid-cols-2 gap-10">
+                      {data?.facebook ? (
+                        <a
+                          href={data?.facebook}
+                          target="_blank"
+                          className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-200 sm:flex-1 bg-white shadow-sm  cursor-pointer"
+                          rel="noreferrer"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            className="text-primary h-full w-10"
+                            fill="currentColor"
+                          >
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <button
+                          className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 bg-white shadow-sm  cursor-pointer"
+                          disabled
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            className="text-neutral h-full w-10"
+                            fill="currentColor"
+                          >
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                          </svg>
+                        </button>
+                      )}
+
+                      {data?.instagram ? (
+                        <a
+                          href={data?.instagram}
+                          target="_blank"
+                          className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-200 sm:flex-1  bg-white shadow-sm cursor-pointer"
+                          rel="noreferrer"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            className="text-primary h-full w-10"
+                            fill="currentColor"
+                          >
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <button
+                          className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 bg-white shadow-sm  cursor-pointer"
+                          disabled
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            className="text-neutral h-full w-10"
+                            fill="currentColor"
+                          >
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                    {data?.wsp && (
+                      <div className="mt-5">
+                        <h3 className="text-sm text-base-content font-medium mb-2">Whatsapp</h3>
+                        <div>
+                          <p className="text-base">{data?.wsp}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-              {/* <!-- Description and details --> */}
+              <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                {/* <!-- Description and details --> */}
 
-              <div>
-                <h3 className="sr-only">Descripción</h3>
+                <div>
+                  <h3 className="sr-only">Descripción</h3>
 
-                <div className="space-y-6">
-                  <p
-                    className="text-base text-base-content"
-                    dangerouslySetInnerHTML={{ __html: data?.description || '' }}
-                  ></p>
+                  <div className="space-y-6">
+                    <p
+                      className="text-base text-base-content"
+                      dangerouslySetInnerHTML={{ __html: data?.description || '' }}
+                    ></p>
+                  </div>
                 </div>
-              </div>
 
-              {/* <div className="mt-10">
+                {/* <div className="mt-10">
                 <h3 className="text-sm font-medium text-base-content">Highlights</h3>
 
                 <div className="mt-4">
@@ -376,18 +377,19 @@ const ServiceScreen = () => {
                 </div>
               </div> */}
 
-              {/* <div className="mt-10">
+                {/* <div className="mt-10">
                 <h2 className="text-sm font-medium text-base-content">Detalles</h2>
 
                 <div className="mt-4 space-y-6">
                   <p className="text-sm text-base-content">{data?.description}</p>
                 </div>
               </div> */}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </SRLWrapper>
+    </SimpleReactLightbox>
   )
 }
 
