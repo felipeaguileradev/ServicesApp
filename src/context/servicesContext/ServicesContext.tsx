@@ -17,6 +17,7 @@ export interface IClient {
 
 export interface Services {
   category: string
+  categoryServicesTitle: string
   client: IClient
   description: string
   facebook: string

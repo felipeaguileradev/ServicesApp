@@ -8,12 +8,15 @@ import Navbar from '../components/ui/Navbar'
 import ServiceScreen from '../components/Services/ServiceScreen'
 import ServicesScreen from '../components/Services/ServicesScreen'
 import { ServicesContext } from '../context/servicesContext/ServicesContext'
+import { CategoriesContext } from '../context/categoryContext/CategoryContext'
 
 const AppRouter = () => {
   const { getServices } = useContext(ServicesContext)
+  const { getCategories } = useContext(CategoriesContext)
 
   useEffect(() => {
     getServices()
+    getCategories()
   }, [])
 
   return (
