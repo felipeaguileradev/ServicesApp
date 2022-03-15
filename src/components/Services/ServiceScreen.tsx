@@ -3,6 +3,10 @@ import { useParams } from 'react-router'
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox'
 import { ScrollTop } from '../../helpers/ScrollTop'
 import { ServicesContext, Services } from '../../context/servicesContext/ServicesContext'
+import FourServices from './FourServices'
+import OneService from './OneService'
+import TwoServices from './TwoServices'
+import ThreeServices from './ThreeServices'
 
 interface Params {
   id: string
@@ -98,56 +102,10 @@ const ServiceScreen = () => {
         </nav> */}
 
             {/* <!-- Image gallery --> */}
-            {data && data?.images.length > 0 && (
-              <div
-                className={`mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 ${
-                  data.images.length > 1 && 'lg:grid lg:grid-cols-3 lg:gap-x-8'
-                }`}
-              >
-                {data.images.length === 1 ? (
-                  <div className="hidden aspect-w-5 aspect-h-2 rounded-lg overflow-hidden lg:block">
-                    <img
-                      src={data?.images[0].url}
-                      alt={data.servicesName}
-                      className="w-full h-full object-center object-cover"
-                    />
-                  </div>
-                ) : (
-                  <>
-                    <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                      <img
-                        src={data?.images[1].url}
-                        alt={data.servicesName}
-                        className="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                    <div className="lg:grid lg:grid-cols-1 lg:gap-y-8">
-                      <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-                        <img
-                          src={data?.images[0].url}
-                          alt={data.servicesName}
-                          className="w-full h-full object-center object-cover"
-                        />
-                      </div>
-                      <div className="hidden  lg:block lg:aspect-w-3  lg:aspect-h-2  lg:rounded-lg  lg:overflow-hidden">
-                        <img
-                          src={data?.images[2].url}
-                          alt={data.servicesName}
-                          className="w-full h-full object-center object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                      <img
-                        src={data?.images[3].url}
-                        alt={data.servicesName}
-                        className="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
-            )}
+            {data && data?.images.length === 1 && <OneService data={data} />}
+            {data && data?.images.length === 2 && <TwoServices data={data} />}
+            {data && data?.images.length === 3 && <ThreeServices data={data} />}
+            {data && data?.images.length === 4 && <FourServices data={data} />}
 
             {/* <!-- Product info --> */}
             <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
